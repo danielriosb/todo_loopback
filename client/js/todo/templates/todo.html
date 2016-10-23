@@ -1,0 +1,22 @@
+<h1>Todo list</h1>
+<hr>
+<form name="todoForm" novalidate ng-submit="addTodo()">
+ <div
+     ng-class="{'has-error': todoForm.content.$invalid
+       && todoForm.content.$dirty}">
+   <input type="text" name="content"
+       placeholder="Content" autocomplete="off" required
+       ng-model="newTodo.content">
+   <span ng-show="
+       todoForm.content.$invalid && todoForm.content.$dirty">
+     Content is required.
+   </span>
+ </div>
+ <button ng-disabled="todoForm.$invalid">Add</button>
+</form>
+<hr>
+<div>
+ <a ng-repeat="todo in todos">{{todo.content}}&nbsp;
+   <i
+       ng-click="removeTodo(todo)"></i></a>
+</div>
